@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - CO_VM</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/CO_VM.styles.css" asp-append-version="true" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="">
+
+                <img src="~/newlogo.jpg" alt="Avatar Logo" style="width:50px;" class="rounded-pill">
+
+            </a>
+
+            <div class="collapse navbar-collapse" id="mynavbar">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Index", "Vaccine")" class="btn btn-outline-light me-4">Home</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Vaccines", "Vaccine")" class="btn btn-outline-light me-4">Vaccines</a>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="@Url.Action("Login", "Vaccine")" role="button" class="btn btn-outline-light dropdown-toggle me-4" data-bs-toggle="dropdown">Login</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="@Url.Action("Login","Vaccine")" class="dropdown-item">User Login</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AdminLogin","Admin")" class="dropdown-item">Admin Login</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Register", "Vaccine")" class="btn btn-outline-light me-4">Register</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <form class="d-flex">
+
+                <input class="form-control me-2" type="text" placeholder="Search">
+
+                <button class="btn btn-primary mx-3" type="button">Search</button>
+
+                <!--3bar icon setup-->
+
+                <button class="btn border-0 ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#rightSidebar" aria-controls="rightSidebar">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </nav>
+
+    <!--Right Sidebar-->
+
+    <div class="offcanvas offcanvas-end" style="background-color:lightgray" tabindex="-1" id="rightSidebar" aria-labelledby="rightSidebarLabel">
+
+        <div class="offcanvas-header">
+
+            <h5 id="rightSidebarLabel">Menu</h5>
+
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+        </div>
+
+        <div class="offcanvas-body">
+
+            <div class="d-grid gap-2">
+
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("UserDashboard", "Vaccine")" class="sidebar-row">Dashboard</a>
+
+                    </li>
+                    <br />
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Certificate", "Vaccine")" class="sidebar-row">Download Certificate</a>
+
+                    </li>
+                    <br />
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Logout", "Vaccine")" class="sidebar-row">Logout</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="@Url.Action("Feedback", "Vaccine")" class="sidebar-row">Give Feedback</a>
+
+                    </li>
+                   
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <style>
+
+        .sidebar-row {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #000;
+            background-color: #f8f9fa;
+            transition: background-color 0.2s ease;
+        }
+
+            .sidebar-row:hover {
+                background-color: #e2e6ea;
+            }
+
+            .sidebar-row + .sidebar-row {
+                margin-top: 10px;
+            }
+    </style>
+
+    @RenderBody()
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>

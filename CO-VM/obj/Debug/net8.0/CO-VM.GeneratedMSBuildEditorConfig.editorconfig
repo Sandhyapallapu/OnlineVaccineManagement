@@ -1,0 +1,149 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CO_VM
+build_property.RootNamespace = CO_VM
+build_property.ProjectDir = C:\Users\jahnvi.rawat\Source\Repos\CO-VM\CO-VM\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\jahnvi.rawat\Source\Repos\CO-VM\CO-VM
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/AddVaccine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVmFjY2luZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/AdminLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/DeleteUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/DeleteVaccine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlVmFjY2luZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/UpdateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/UpdateVaccine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlVmFjY2luZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/ViewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1VzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Admin/ViewVaccine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1ZhY2NpbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/BookSlot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxCb29rU2xvdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/BookSlotForUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxCb29rU2xvdEZvclVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Family.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxGYW1pbHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Feedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxGZWVkYmFjay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/ProjectHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxQcm9qZWN0SG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/ShowSlot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxTaG93U2xvdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/UserDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxVc2VyRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Vaccine/Vaccines.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZVxWYWNjaW5lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jahnvi.rawat/Source/Repos/CO-VM/CO-VM/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-j8n47mvesd

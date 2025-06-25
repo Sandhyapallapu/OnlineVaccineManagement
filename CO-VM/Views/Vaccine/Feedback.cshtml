@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Vaccine Feedback";
+    var userId = Context.Session.GetString("UserId");
+}
+
+<div class="container mt-4">
+    <h2>Submit Vaccine Feedback</h2>
+    <form id="feedbackForm">
+        <input type="hidden" id="UserId" value="@userId" />
+        <div class="mb-3">
+            <label for="VaccineId" class="form-label">Vaccine</label>
+            <select id="VaccineId" name="VaccineId" class="form-control" required>
+                <option value="">Select Vaccine</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="FullName" class="form-label">Full Name</label>
+            <input type="text" id="FullName" name="FullName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="PhoneNumber" class="form-label">Phone Number</label>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="Rating" class="form-label">Rating (1-5)</label>
+            <input type="number" id="Rating" name="Rating" class="form-control" min="1" max="5" required />
+        </div>
+        <div class="mb-3">
+            <label for="Feedback" class="form-label">Feedback</label>
+            <textarea id="Feedback" name="Feedback" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit Feedback</button>
+        <div id="feedbackMsg" class="mt-3"></div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Populate vaccines dropdown on load
+        window.onload = function () {
+            var userId = document.getElementById('UserId').value;
+            fetch('/Vaccine/Feedback/Feedback?userId=' + userId)
+                .then(response => response.json())
+                .then(data => {
+                    var vaccineSelect = document.getElementById('VaccineId');
+                    data.forEach(function (v) {
+                        var option = document.createElement('option');
+                        option.value = v.vaccineId;
+                        option.text = v.vaccineName;
+                        vaccineSelect.appendChild(option);
+                    });
+                });
+        };
+
+        // Handle form submission via AJAX
+        document.getElementById('feedbackForm').onsubmit = function (e) {
+            e.preventDefault();
+            var feedback = {
+                UserId: document.getElementById('UserId').value,
+                VaccineId: document.getElementById('VaccineId').value,
+                FullName: document.getElementById('FullName').value,
+                PhoneNumber: document.getElementById('PhoneNumber').value,
+                Rating: document.getElementById('Rating').value,
+                Feedback: document.getElementById('Feedback').value
+            };
+            fetch('/Vaccine/Feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(feedback)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('feedbackMsg').innerHTML =
+                    '<div class="alert alert-success">' + data.message + '</div>';
+                document.getElementById('feedbackForm').reset();
+            })
+            .catch(() => {
+                document.getElementById('feedbackMsg').innerHTML =
+                    '<div class="alert alert-danger">Failed to submit feedback.</div>';
+            });
+        };
+    </script>
+}

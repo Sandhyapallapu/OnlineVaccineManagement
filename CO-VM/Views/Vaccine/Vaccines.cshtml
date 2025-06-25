@@ -1,0 +1,115 @@
+﻿@model List<CO_VM.Models.Vaccine>
+
+<style>
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .search-bar-container {
+        /* width: 100%; */
+        /* max-width: 1200px; */
+        margin: 9em auto 1.5rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .search-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        padding: 1rem 2rem;
+    }
+    .search-form input[type="text"] {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 1rem;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 220px;
+    }
+    .btn-primary {
+        background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1.5rem;
+        transition: background 0.2s;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+        color: #fff;
+    }
+    .vaccine-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(0, 60, 120, 0.10), 0 1.5px 6px rgba(0, 60, 120, 0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: none;
+    }
+    .card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(0, 60, 120, 0.18), 0 3px 12px rgba(0, 60, 120, 0.12);
+    }
+    .card-title {
+        color: #1a237e;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    .card-text {
+        color: #37474f;
+        margin-bottom: 1rem;
+    }
+    .card p {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="search-bar-container">
+    <form asp-action="Vaccines" asp-controller="Vaccine" method="post" class="search-form" autocomplete="off">
+        <input type="text" id="vaccineSearch" name="search" placeholder="Vaccine name or keyword..." />
+        <input type="text" id="stateSearch" name="state" placeholder="State..." />
+        <input type="text" id="centreSearch" name="centre" placeholder="Centre..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="vaccine-container">
+    @foreach (var v in Model)
+    {
+        <div class="card mb-3" style="width: 22rem;">
+            <div class="card-body">
+                <h5 class="card-title">@v.VaccineName</h5>
+                <p class="card-text">@v.Description</p>
+                <p><strong>Manufacturer:</strong> @v.Manufacturer</p>
+                <p><strong>Doses Required:</strong> @v.DosesRequired</p>
+                <p><strong>Price:</strong> @v.Price</p>
+                @* <p><strong>State:</strong> @v.State</p> *@
+                @* <p><strong>Centre:</strong> @v.Centre</p> *@
+                <a asp-controller="Vaccine" asp-action="BookSlotForUser" asp-route-vaccineId="@v.VaccineId" class="btn btn-primary">
+                    Book Slot
+                </a>
+            </div>
+        </div>
+    }
+</div>

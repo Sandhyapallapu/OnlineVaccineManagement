@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Welcome to CO-VM";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #e3f0ff 0%, #f8fbff 100%);
+        min-height: 100vh;
+    }
+    .card-hover {
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+    }
+    .card-hover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0.75rem 2rem rgba(13,110,253,0.10);
+    }
+    .card-body {
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(120deg, #f0f7ff 60%, #e6f2ff 100%);
+        border-radius: 1rem;
+    }
+    .icon-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e3f0ff 60%, #b6e0fe 100%);
+        box-shadow: 0 0.25rem 1rem rgba(13,110,253,0.08);
+        margin-bottom: 1.5rem;
+    }
+    .icon-circle i {
+        font-size: 3rem;
+    }
+</style>
+
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Welcome to CO-VM</h1>
+        <p class="lead text-secondary">Your trusted platform for vaccine management and administration.</p>
+    </div>
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-lg border-0 h-100 card-hover"
+                 onclick="window.location.href='/Vaccine/Login'">
+                <div class="card-body">
+                    <div class="icon-circle">
+                        <i class="bi bi-person-circle text-primary"></i>
+                    </div>
+                    <h3 class="card-title mt-2 mb-2 fw-semibold">User Login</h3>
+                    <p class="card-text text-center mb-4 text-secondary">Access your vaccination records, book appointments, and more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-lg border-0 h-100 card-hover"
+                 onclick="window.location.href='/Admin/AdminLogin'">
+                <div class="card-body">
+                    <div class="icon-circle" style="background: linear-gradient(135deg, #e3ffe3 60%, #b6fcd5 100%);">
+                        <i class="bi bi-shield-lock text-success"></i>
+                    </div>
+                    <h3 class="card-title mt-2 mb-2 fw-semibold">Admin Login</h3>
+                    <p class="card-text text-center mb-4 text-secondary">Manage vaccine inventory, appointments, and user records.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

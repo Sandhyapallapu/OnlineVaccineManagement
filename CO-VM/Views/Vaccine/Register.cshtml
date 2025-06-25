@@ -1,0 +1,170 @@
+﻿
+
+    @model CO_VM.Models.User
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3f0ff 0%, #b6d0f7 50%, #f8fbff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            border-radius: 1.5rem;
+            border: none;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            background: rgba(255,255,255,0.95);
+            width: 1200px;
+            max-width: 100%;
+        }
+        .card-header {
+            border-radius: 1.5rem 1.5rem 0 0;
+            background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .form-label, label {
+            font-weight: 600;
+            color: #1976d2;
+        }
+        .form-control, .form-select {
+            border-radius: 0.75rem;
+            border: 1px solid #b6d0f7;
+            background: #f8fbff;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #1976d2;
+            box-shadow: 0 0 0 0.1rem #1976d233;
+        }
+        .btn-success {
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem;
+            transition: background 0.2s;
+        }
+        .btn-success:hover {
+            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+        }
+        .form-check-label {
+            color: #1976d2;
+            font-weight: 500;
+        }
+        .alert-info {
+            border-radius: 0.75rem;
+        }
+    </style>
+
+    <div class="register-container">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h3 class="mb-0">Register</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.FullName, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.FullName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.FullName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.Username, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.Username, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <div class="d-flex gap-4">
+                                <div class="form-check">
+                                    @Html.RadioButtonFor(c => c.Gender, "Male", new { @class = "form-check-input", id = "genderMale" })
+                                    @Html.Label("Male", "Male", new { @class = "form-check-label", @for = "genderMale" })
+                                </div>
+                                <div class="form-check">
+                                    @Html.RadioButtonFor(c => c.Gender, "Female", new { @class = "form-check-input", id = "genderFemale" })
+                                    @Html.Label("Female", "Female", new { @class = "form-check-label", @for = "genderFemale" })
+                                </div>
+                                <div class="form-check">
+                                    @Html.RadioButtonFor(c => c.Gender, "Other", new { @class = "form-check-input", id = "genderOther" })
+                                    @Html.Label("Other", "Other", new { @class = "form-check-label", @for = "genderOther" })
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(c => c.Gender, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.Dob, "Date of Birth", new { @class = "form-label" })
+                            <input asp-for="Dob" type="date" class="form-control" />
+                            @Html.ValidationMessageFor(c => c.Dob, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.Email, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.Password, new { @class = "form-label" })
+                            @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.AadhaarNo, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.AadhaarNo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.AadhaarNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.PhoneNumber, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.Address, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.City, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.State, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.State, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.State, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Security Question</label>
+                            <select name="SecurityQuestion" class="form-select">
+                                <option>Which is First school</option>
+                                <option>Which is Your Birth Place</option>
+                                <option>Which is your favourite sport</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(c => c.SecurityAnswer, new { @class = "form-label" })
+                            @Html.TextBoxFor(c => c.SecurityAnswer, new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Register</button>
+                        @if (ViewBag.data != null)
+                        {
+                            <div class="alert alert-info mt-3">@ViewBag.data</div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

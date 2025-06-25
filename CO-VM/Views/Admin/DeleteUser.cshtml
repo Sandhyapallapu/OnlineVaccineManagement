@@ -1,0 +1,135 @@
+﻿@model CO_VM.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delete User</title>
+    <style>
+        body {
+            background: #e6f0fa;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form-box {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            min-width: 340px;
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #2a4365;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #2a4365;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #bcd0ee;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f7fbff;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: #2563eb;
+            color: #fff;
+            transition: background 0.2s;
+        }
+
+            .btn:hover {
+                background: #174ea6;
+            }
+
+        .user-details {
+            margin: 1.5rem 0;
+            background: #f1f6fb;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+            .user-details label {
+                font-weight: 500;
+                color: #2a4365;
+                margin-right: 0.5rem;
+            }
+
+        .delete-section {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="form-box">
+            <div class="form-title">Delete User</div>
+            <form method="get" autocomplete="off">
+                <div class="form-group">
+                    <label class="form-label" for="userIdInput">User ID</label>
+                    <input type="text" id="userIdInput" name="id" class="form-control" placeholder="Enter User ID" />
+                </div>
+                <div class="form-group" style="text-align:center;">
+                    <input type="submit" value="Search" class="btn" />
+                </div>
+            </form>
+
+            @if (Model != null)
+            {
+                <div class="user-details">
+                    <div><label>User ID:</label> @Model.UserId</div>
+                    <div><label>Username:</label> @Model.Username</div>
+                    <div><label>Full Name:</label> @Model.FullName</div>
+                    <div><label>Email:</label> @Model.Email</div>
+                    <div><label>Aadhaar No:</label> @Model.AadhaarNo</div>
+                    <div><label>Gender:</label> @Model.Gender</div>
+                    <div><label>City:</label> @Model.City</div>
+                    <div><label>State:</label> @Model.State</div>
+                </div>
+                <form method="post" class="delete-section">
+                    <input type="submit" value="Delete" class="btn" style="background:#e53e3e;" onclick="return confirm('Are you sure you want to delete this user?');">
+                </form>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
+

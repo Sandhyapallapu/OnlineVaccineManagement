@@ -1,0 +1,136 @@
+﻿@model CO_VM.Models.User
+<style>
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #e3f0ff 0%, #b6d0f7 50%, #6ea8fe 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .center-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .register-card {
+        background: #fff;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+        border-radius: 16px;
+        padding: 40px 32px 32px 32px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+        .register-card h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2563eb;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+    .form-control {
+        margin-bottom: 16px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        background: #2563eb;
+        border: none;
+        transition: background 0.2s;
+    }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+    label {
+        font-weight: 500;
+        color: #222;
+    }
+
+    .text-danger {
+        font-size: 0.95em;
+    }
+
+    select.form-control {
+        margin-bottom: 16px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="register-card">
+        <h1>REGISTER</h1>
+        <hr />
+        <form method="post">
+            @Html.LabelFor(c => c.FullName, "FullName")
+            @Html.ValidationMessageFor(c => c.FullName, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.FullName, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.Username, "Username")
+            @Html.ValidationMessageFor(c => c.Username, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.Username, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.Email, "Email")
+            @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.Password, "Password")
+            @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.Password, new { @type = "string", @class = "form-control" })
+
+            @Html.LabelFor(c => c.Gender, "Gender")
+            @Html.ValidationMessageFor(c => c.Gender, "", new { @class = "text-danger" }) <br />
+            <div style="margin-bottom:16px;">
+                @Html.RadioButtonFor(c => c.Gender, "Male", new { id = "genderMale" })
+                <label for="genderMale" style="margin-right:16px;">Male</label>
+                @Html.RadioButtonFor(c => c.Gender, "Female", new { id = "genderFemale" })
+                <label for="genderFemale" style="margin-right:16px;">Female</label>
+                @Html.RadioButtonFor(c => c.Gender, "Other", new { id = "genderOther" })
+                <label for="genderOther">Other</label>
+            </div>
+
+            @Html.LabelFor(c => c.Dob, "DOB")
+            @Html.ValidationMessageFor(c => c.Dob, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.Dob, new { @type = "date", @class = "form-control" })
+
+            @Html.LabelFor(c => c.AadhaarNo, "AadhaarNo")
+            @Html.ValidationMessageFor(c => c.AadhaarNo, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.AadhaarNo, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.PhoneNumber, "PhoneNumber")
+            @Html.ValidationMessageFor(c => c.PhoneNumber, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.Address, "Address")
+            @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.City, "City")
+            @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.State, "State")
+            @Html.ValidationMessageFor(c => c.State, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(c => c.State, new { @class = "form-control" })
+
+            @Html.LabelFor(c => c.SecurityQuestion, "SecurityQuestion")
+            <select name="SecurityQuestion" class="form-control">
+                <option value="Which is your First School">Which is your First School ?</option>
+                <option value="Which is Your Birth Place">Which is Your Birth Place</option>
+                <option value="Which is your favourite sport">Which is your favourite sport</option>
+            </select>
+
+            @Html.LabelFor(c => c.SecurityAnswer, "SecurityAnswer")
+            @Html.TextBoxFor(c => c.SecurityAnswer, new { @class = "form-control" })
+
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </form>
+    </div>
+</div>

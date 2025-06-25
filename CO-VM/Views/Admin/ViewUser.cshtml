@@ -1,0 +1,101 @@
+﻿@model List<CO_VM.Models.User>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>View Users</title>
+    <style>
+        body {
+            background: #e6f0fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .user-table-container {
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            min-width: 700px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2a4d7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #d0e6fa;
+            color: #2a4d7a;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f4f8fc;
+        }
+
+        tr:hover {
+            background: #e0f0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="user-table-container">
+            <h2>User List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Aadhaar No</th>
+                        <th>Gender</th>
+                        <th>City</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td>@user.Username</td>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.AadhaarNo</td>
+                            <td>@user.Gender</td>
+                            <td>@user.City</td>
+                            <td>@user.State</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

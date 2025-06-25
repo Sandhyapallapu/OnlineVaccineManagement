@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "CO_VM.Controllers.FeedbackController",
+    "Method": "PostFeedback",
+    "RelativePath": "Vaccine/Feedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "feedback",
+        "Type": "CO_VM.Models.VaccinationFeedback",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CO_VM.Controllers.FeedbackController",
+    "Method": "GetCompletedVaccines",
+    "RelativePath": "Vaccine/Feedback/Feedback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

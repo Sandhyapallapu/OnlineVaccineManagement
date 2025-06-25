@@ -1,0 +1,143 @@
+﻿@model CO_VM.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e3f0ff 0%, #b6d0f7 50%, #f8fbff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card {
+        border: none;
+        border-radius: 1.25rem;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        background: rgba(255,255,255,0.95);
+        /* Increased width */
+        width: 1200px;
+        max-width: 100%;
+    }
+    .card-header {
+        border-radius: 1.25rem 1.25rem 0 0;
+        background: linear-gradient(90deg, #3a8dde 0%, #6fb1fc 100%);
+        color: #fff;
+        box-shadow: 0 2px 8px 0 rgba(58,141,222,0.10);
+    }
+    .form-label {
+        color: #2d3a4a;
+        font-weight: 600;
+    }
+    .form-control {
+        border-radius: 0.75rem;
+        border: 1px solid #d1e3f8;
+        background: #f7fbff;
+        font-size: 1rem;
+    }
+    .btn-success {
+        background: linear-gradient(90deg, #3a8dde 0%, #6fb1fc 100%);
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        transition: background 0.2s;
+    }
+    .btn-success:hover {
+        background: linear-gradient(90deg, #6fb1fc 0%, #3a8dde 100%);
+    }
+    .btn-outline-primary {
+        border-radius: 0.5rem;
+    }
+    .captcha-box {
+        background: #e3f0ff;
+        border: 1px solid #b6d0f7;
+        border-radius: 0.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+    .links a {
+        color: #3a8dde;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .links a:hover {
+        color: #235a96;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="login-container">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h3 class="mb-0 fw-bold">Login</h3>
+            </div>
+            <div class="card-body p-4">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                    <div class="mb-4">
+                        <label class="form-label"><strong>Username</strong></label>
+                        @Html.TextBoxFor(c => c.Username, new { @class = "form-control", placeholder = "Enter your username" })
+                        @Html.ValidationMessageFor(c => c.Username, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label"><strong>Password</strong></label>
+                        @Html.PasswordFor(c => c.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                        @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label"><strong>Captcha</strong></label>
+                        <div class="d-flex align-items-center mb-2">
+                            <span id="captcha-code" class="captcha-box px-3 py-2 me-2"></span>
+                            <button type="button" onclick="refreshCaptcha();" class="btn btn-outline-primary btn-sm">Refresh</button>
+                        </div>
+                        <input type="text" name="Captcha" class="form-control" placeholder="Enter captcha here" autocomplete="off" />
+                        <span class="text-danger">@ViewBag.CaptchaError</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4 links">
+                        <a href="@Url.Action("ForgotPassword", "Vaccine")">Forgot Password?</a>
+                        <a href="@Url.Action("ResetPassword", "Vaccine")">Reset Password</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 py-2">LOGIN</button>
+                }
+
+                @if (TempData["Success"] != null)
+                {
+                    <script>
+                        alert("@TempData["Success"]");
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function refreshCaptcha() {
+        fetch('@Url.Action("Captcha", "Vaccine")')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('captcha-code').innerText = data;
+            });
+    }
+    window.onload = function () {
+        refreshCaptcha();
+    };
+</script>

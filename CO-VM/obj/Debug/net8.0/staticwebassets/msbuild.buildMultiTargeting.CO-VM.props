@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CO-VM.props" />
+</Project>

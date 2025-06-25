@@ -1,0 +1,125 @@
+﻿@model CO_VM.Models.Vaccine
+
+<style>
+    body {
+        background: #e6f0fa;
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+
+    .form-card {
+        background: #fff;
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        min-width: 350px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: #2a4365;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #2a4365;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #bcd0ee;
+        border-radius: 6px;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+    .vaccine-details {
+        background: #f1f6fb;
+        border-radius: 8px;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        margin-top: 1.2rem;
+        color: #2a4365;
+    }
+
+        .vaccine-details label {
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+    .vaccine-image {
+        max-width: 100px;
+        max-height: 100px;
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        border: 1px solid #bcd0ee;
+    }
+</style>
+
+<div class="center-container">
+    <div class="form-card">
+        <div class="form-title">Delete Vaccine</div>
+        <form method="get" class="mb-3">
+            <div class="form-group">
+                <label class="form-label" for="vaccineId">Vaccine ID</label>
+                <input type="text" id="vaccineId" name="id" class="form-control" placeholder="Enter Vaccine ID" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Search</button>
+        </form>
+        @if (Model != null)
+        {
+            <div class="vaccine-details">
+                @* @if (!string.IsNullOrEmpty(Model.Image)) *@
+                @* { *@
+                @*     <img src="@Model.Image" alt="Vaccine Image" class="vaccine-image" /> *@
+                @* } *@
+                <div><label>ID:</label> @Model.VaccineId</div>
+                <div><label>Name:</label> @Model.VaccineName</div>
+                <div><label>Manufacturer:</label> @Model.Manufacturer</div>
+                <div><label>Doses Required:</label> @Model.DosesRequired</div>
+                <div><label>Stock:</label> @Model.Stock</div>
+                <div><label>Price:</label> $@Model.Price</div>
+                <div><label>Description:</label> @Model.Description</div>
+            </div>
+            <form method="post">
+                <button type="submit" class="btn btn-primary" style="width:100%;">Delete</button>
+            </form>
+        }
+    </div>
+</div>

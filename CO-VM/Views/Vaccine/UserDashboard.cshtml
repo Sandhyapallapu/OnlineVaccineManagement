@@ -1,0 +1,548 @@
+﻿@* @{ *@
+@*     var user = ViewBag.User as CO_VM.Models.User; *@
+@*     var family = ViewBag.Family as List<CO_VM.Models.Family>; *@
+@*     int bookingCount = ViewBag.BookingCount; *@
+@* } *@
+@* <!DOCTYPE html> *@
+@* <html> *@
+@* <head> *@
+@*     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet"> *@
+@*     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> *@
+@*     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"> *@
+@*     <style> *@
+@*         html, body { *@
+@*             height: 100%; *@
+@*             margin: 0; *@
+@*             padding: 0; *@
+@*             font-family: 'Roboto', Arial, sans-serif; *@
+@*             background: #f5f7fa; *@
+@*         } *@
+
+@*         body { *@
+@*             min-height: 100vh; *@
+@*             height: 100%; *@
+@*             background-image: url('@Url.Content("/dashboardbg.png")'); *@
+@*             background-size: cover; *@
+@*             background-repeat: no-repeat; *@
+@*             /* Remove background-attachment: fixed; */ *@
+@* 			background-attachment: fixed; /* Changed to scroll for better performance */ *@
+@*             background-position: center center; *@
+@*         } *@
+
+
+@*         .container { *@
+@*             background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); *@
+@*             border-radius: 16px; *@
+@*             padding: 32px 32px 24px 32px; *@
+@*             margin-top: 40px; *@
+@*             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); *@
+@*             max-width: 1250px; *@
+@*         } *@
+
+@*         .dashboard-title { *@
+@*             font-weight: 700; *@
+@*             font-size: 2.2rem; *@
+@*             color: #1976d2; *@
+@*             letter-spacing: 1px; *@
+@*             margin-bottom: 24px; *@
+@*         } *@
+
+@*         .card { *@
+@*             border-radius: 14px; *@
+@*             box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07); *@
+@*             border: none; *@
+@*             transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1); *@
+@*         } *@
+
+@*             .card:hover { *@
+@*                 transform: translateY(-6px) scale(1.025); *@
+@*                 box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18), 0 2px 8px rgba(25, 118, 210, 0.07); *@
+@*                 z-index: 2; *@
+@*             } *@
+
+@*         .card-header { *@
+@*             border-radius: 14px 14px 0 0; *@
+@*             font-weight: 500; *@
+@*             font-size: 1.15rem; *@
+@*         } *@
+
+@*         .user-details-list p { *@
+@*             margin-bottom: 8px; *@
+@*             font-size: 1.05rem; *@
+@*         } *@
+
+@*         .family-member-card .card-title { *@
+@*             font-size: 1.1rem; *@
+@*             font-weight: 600; *@
+@*             color: #1976d2; *@
+@*         } *@
+
+@*         .family-member-card .card-text { *@
+@*             font-size: 0.98rem; *@
+@*         } *@
+
+@*         .btn { *@
+@*             font-weight: 500; *@
+@*             border-radius: 6px; *@
+@*         } *@
+
+@*         .btn-success, .btn-info, .btn-primary { *@
+@*             box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08); *@
+@*         } *@
+
+@*         .alert-info { *@
+@*             background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%); *@
+@*             color: #1976d2; *@
+@*             border: none; *@
+@*             border-radius: 10px; *@
+@*             font-size: 1.1rem; *@
+@*             font-weight: 500; *@
+@*             margin-top: 24px; *@
+@*         } *@
+
+@*         .badge.bg-primary { *@
+@*             font-size: 1.1rem; *@
+@*             padding: 0.5em 1.1em; *@
+@*             border-radius: 8px; *@
+@*         } *@
+
+@*         .booking-card .card-title { *@
+@*             color: #388e3c; *@
+@*             font-size: 1.08rem; *@
+@*             font-weight: 600; *@
+@*         } *@
+
+@*         .booking-card .card-text { *@
+@*             font-size: 0.97rem; *@
+@*         } *@
+
+@*         .booking-card .btn-warning { *@
+@*             color: #fff; *@
+@*         } *@
+
+@*         .no-family, .no-bookings { *@
+@*             color: #888; *@
+@*             font-style: italic; *@
+@*             margin: 12px 0; *@
+@*         } *@
+
+@*         { *@
+@*             padding: 18px 6px 12px 6px; *@
+@*         } *@
+
+@*         } *@
+@*     </style> *@
+@* </head> *@
+@* <body> *@
+@*     <div class="container shadow-lg"> *@
+@*         <div class="dashboard-title mb-4 d-flex align-items-center gap-2"> *@
+@*             <i class="bi bi-person-circle"></i> User Dashboard *@
+@*         </div> *@
+
+@*         <div class="row g-4"> *@
+@*             <div class="col-lg-5"> *@
+@*                 <div class="card mb-4"> *@
+@*                     <div class="card-header bg-primary text-white"> *@
+@*                         <i class="bi bi-person-badge me-2"></i>Your Details *@
+@*                     </div> *@
+@*                     <div class="card-body user-details-list"> *@
+@*                         <p><strong>Full Name:</strong> @user.FullName</p> *@
+@*                         <p><strong>Username:</strong> @user.Username</p> *@
+@*                         <p><strong>Email:</strong> @user.Email</p> *@
+@*                         <p><strong>Aadhaar No:</strong> @user.AadhaarNo</p> *@
+@*                         <p><strong>Gender:</strong> @user.Gender</p> *@
+@*                         <p><strong>Date of Birth:</strong> @user.Dob.ToShortDateString()</p> *@
+@*                         <p><strong>Phone Number:</strong> @user.PhoneNumber</p> *@
+@*                         <p><strong>Address:</strong> @user.Address, @user.City, @user.State</p> *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <div class="col-lg-7"> *@
+@*                 <div class="card mb-4"> *@
+@*                     <div class="card-header bg-success text-white d-flex justify-content-between align-items-center"> *@
+@*                         <span><i class="bi bi-people-fill me-2"></i>Family Members</span> *@
+@*                         <a asp-controller="Vaccine" asp-action="Family" class="btn btn-light btn-sm shadow-sm"> *@
+@*                             <i class="bi bi-person-plus"></i> Add Family Member *@
+@*                         </a> *@
+@*                     </div> *@
+@*                     <div class="card-body"> *@
+@*                         @if (family != null && family.Count > 0) *@
+@*                         { *@
+@*                             <div class="row g-3"> *@
+@*                                 @foreach (var f in family) *@
+@*                                 { *@
+@*                                     <div class="col-md-6 col-xl-4"> *@
+@*                                         <div class="card family-member-card h-100"> *@
+@*                                             <div class="card-body"> *@
+@*                                                 <h5 class="card-title"><i class="bi bi-person-fill me-1"></i>@f.FullName</h5> *@
+@*                                                 <p class="card-text"><strong>Date of Birth:</strong> @f.Dob.ToShortDateString()</p> *@
+@*                                                 <p class="card-text"><strong>Gender:</strong> @f.Gender</p> *@
+@*                                                 <p class="card-text"><strong>Aadhaar No:</strong> @f.AadhaarNo</p> *@
+@*                                                 <div class="d-flex gap-2 mt-2"> *@
+@*                                                     <a asp-controller="Vaccine" asp-action="BookSlot" asp-route-familyId="@f.FamilyId" class="btn btn-success btn-sm flex-fill"><i class="bi bi-calendar-plus"></i> Book Slot</a> *@
+@*                                                     <form asp-controller="Vaccine" asp-action="DeleteFamily" asp-route-id="@f.FamilyId" method="post" style="display:inline;"> *@
+@*                                                         <button type="submit" class="btn btn-danger btn-sm flex-fill" onclick="return confirm('Are you sure you want to delete this family member?');"><i class="bi bi-trash"></i> Delete</button> *@
+@*                                                     </form> *@
+@*                                                 </div> *@
+@*                                             </div> *@
+@*                                         </div> *@
+@*                                     </div> *@
+@*                                 } *@
+@*                             </div> *@
+@*                         } *@
+@*                         else *@
+@*                         { *@
+@*                             <div class="no-family">No family members added yet.</div> *@
+@*                         } *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+
+@*         <div class="alert alert-info d-flex align-items-center gap-2"> *@
+@*             <i class="bi bi-capsule-pill fs-4"></i> *@
+@*             <span>Total Vaccines Booked (You & Family):</span> *@
+@*             <span class="badge bg-primary">@bookingCount</span> *@
+@*         </div> *@
+
+@*         @if (ViewBag.Bookings != null && ViewBag.Bookings.Count > 0) *@
+@*         { *@
+@*             <div class="card mt-4"> *@
+@*                 <div class="card-header bg-info text-white"> *@
+@*                     <i class="bi bi-calendar-check me-2"></i>Booking Details *@
+@*                 </div> *@
+@*                 <div class="card-body"> *@
+@*                     <div class="row g-3"> *@
+@*                         @foreach (var booking in ViewBag.Bookings) *@
+@*                         { *@
+@*                             var isUserBooking = booking.FamilyId == null; *@
+@*                             var memberName = booking.Family != null ? booking.Family.FullName : ViewBag.User.FullName; *@
+@*                             var vaccineName = booking.Vaccine?.VaccineName ?? ""; *@
+@*                             var slotDate = booking.Slot?.SlotDate.ToString("yyyy-MM-dd") ?? ""; *@
+@*                             var slotTime = booking.Slot?.SlotTime.ToString(@"hh\:mm") ?? ""; *@
+@*                             <div class="col-md-6 col-xl-4"> *@
+@*                                 <div class="card booking-card h-100"> *@
+@*                                     <div class="card-body"> *@
+@*                                         <h5 class="card-title"><i class="bi bi-person-badge me-1"></i>@memberName</h5> *@
+@*                                         <p class="card-text"><strong>Vaccine:</strong> @vaccineName</p> *@
+@*                                         <p class="card-text"><strong>Slot Date:</strong> @slotDate</p> *@
+@*                                         <p class="card-text"><strong>Slot Time:</strong> @slotTime</p> *@
+@*                                         <p class="card-text"> *@
+@*                                             <strong>Status:</strong> *@
+@*                                             <span class="badge @(booking.Status == "Booked" ? "bg-success" : "bg-secondary")">@booking.Status</span> *@
+@*                                         </p> *@
+@*                                         <div class="d-flex gap-2 mt-2"> *@
+@*                                             @if (booking.Status == "Booked") *@
+@*                                             { *@
+@*                                                 if (isUserBooking) *@
+@*                                                 { *@
+@*                                                     <form asp-controller="Vaccine" asp-action="CancelBookingForUser" method="post" style="display:inline;"> *@
+@*                                                         <button type="submit" class="btn btn-warning btn-sm flex-fill" onclick="return confirm('Are you sure you want to cancel this booking?');"><i class="bi bi-x-circle"></i> Cancel Slot</button> *@
+@*                                                     </form> *@
+@*                                                 } *@
+@*                                                 else *@
+@*                                                 { *@
+@*                                                     <form asp-controller="Vaccine" asp-action="CancelBooking" asp-route-familyId="@booking.FamilyId" method="post" style="display:inline;"> *@
+@*                                                         <button type="submit" class="btn btn-warning btn-sm flex-fill" onclick="return confirm('Are you sure you want to cancel this booking?');"><i class="bi bi-x-circle"></i> Cancel Slot</button> *@
+@*                                                     </form> *@
+@*                                                 } *@
+@*                                             } *@
+@*                                             @if (booking.Status == "Cancelled") *@
+@*                                             { *@
+@*                                                 if (isUserBooking) *@
+@*                                                 { *@
+@*                                                     <a asp-controller="Vaccine" asp-action="BookSlotForUser" asp-route-vaccineId="@booking.VaccineId" class="btn btn-info btn-sm flex-fill"><i class="bi bi-arrow-repeat"></i> Reschedule Slot</a> *@
+@*                                                 } *@
+@*                                                 else *@
+@*                                                 { *@
+@*                                                     <a asp-controller="Vaccine" asp-action="BookSlot" asp-route-familyId="@booking.FamilyId" class="btn btn-info btn-sm flex-fill"><i class="bi bi-arrow-repeat"></i> Reschedule Slot</a> *@
+@*                                                 } *@
+@*                                             } *@
+@*                                         </div> *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                             </div> *@
+@*                         } *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*         } *@
+@*         else *@
+@*         { *@
+@*             <div class="no-bookings mt-4">No bookings found.</div> *@
+@*         } *@
+@*     </div> *@
+@* </body> *@
+    @{
+        var user = ViewBag.User as CO_VM.Models.User;
+        var family = ViewBag.Family as List<CO_VM.Models.Family>;
+        int bookingCount = ViewBag.BookingCount;
+    }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Roboto', Arial, sans-serif;
+                background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            }
+
+            body {
+                min-height: 100vh;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container {
+                background: #fff;
+                border-radius: 16px;
+                padding: 32px 32px 24px 32px;
+                margin-top: 0;
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+                max-width: 1250px;
+            }
+
+            .dashboard-title {
+                font-weight: 700;
+                font-size: 2.2rem;
+                color: #1976d2;
+                letter-spacing: 1px;
+                margin-bottom: 24px;
+            }
+
+            .card {
+                border-radius: 14px;
+                box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+                border: none;
+                transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1);
+            }
+
+                .card:hover {
+                    transform: translateY(-6px) scale(1.025);
+                    box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18), 0 2px 8px rgba(25, 118, 210, 0.07);
+                    z-index: 2;
+                }
+
+            .card-header {
+                border-radius: 14px 14px 0 0;
+                font-weight: 500;
+                font-size: 1.15rem;
+            }
+
+            .user-details-list p {
+                margin-bottom: 8px;
+                font-size: 1.05rem;
+            }
+
+            .family-member-card .card-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #1976d2;
+            }
+
+            .family-member-card .card-text {
+                font-size: 0.98rem;
+            }
+
+            .btn {
+                font-weight: 500;
+                border-radius: 6px;
+            }
+
+            .btn-success, .btn-info, .btn-primary {
+                box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08);
+            }
+
+            .alert-info {
+                background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+                color: #1976d2;
+                border: none;
+                border-radius: 10px;
+                font-size: 1.1rem;
+                font-weight: 500;
+                margin-top: 24px;
+            }
+
+            .badge.bg-primary {
+                font-size: 1.1rem;
+                padding: 0.5em 1.1em;
+                border-radius: 8px;
+            }
+
+            .booking-card .card-title {
+                color: #388e3c;
+                font-size: 1.08rem;
+                font-weight: 600;
+            }
+
+            .booking-card .card-text {
+                font-size: 0.97rem;
+            }
+
+            .booking-card .btn-warning {
+                color: #fff;
+            }
+
+            .no-family, .no-bookings {
+                color: #888;
+                font-style: italic;
+                margin: 12px 0;
+            }
+
+            {
+                padding: 18px 6px 12px 6px;
+            }
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container shadow-lg">
+            <div class="dashboard-title mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-person-circle"></i> User Dashboard
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <i class="bi bi-person-badge me-2"></i>Your Details
+                        </div>
+                        <div class="card-body user-details-list">
+                            <p><strong>Full Name:</strong> @user.FullName</p>
+                            <p><strong>Username:</strong> @user.Username</p>
+                            <p><strong>Email:</strong> @user.Email</p>
+                            <p><strong>Aadhaar No:</strong> @user.AadhaarNo</p>
+                            <p><strong>Gender:</strong> @user.Gender</p>
+                            <p><strong>Date of Birth:</strong> @user.Dob.ToShortDateString()</p>
+                            <p><strong>Phone Number:</strong> @user.PhoneNumber</p>
+                            <p><strong>Address:</strong> @user.Address, @user.City, @user.State</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-people-fill me-2"></i>Family Members</span>
+                            <a asp-controller="Vaccine" asp-action="Family" class="btn btn-light btn-sm shadow-sm">
+                                <i class="bi bi-person-plus"></i> Add Family Member
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            @if (family != null && family.Count > 0)
+                            {
+                                <div class="row g-3">
+                                    @foreach (var f in family)
+                                    {
+                                        <div class="col-md-6 col-xl-4">
+                                            <div class="card family-member-card h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><i class="bi bi-person-fill me-1"></i>@f.FullName</h5>
+                                                    <p class="card-text"><strong>Date of Birth:</strong> @f.Dob.ToShortDateString()</p>
+                                                    <p class="card-text"><strong>Gender:</strong> @f.Gender</p>
+                                                    <p class="card-text"><strong>Aadhaar No:</strong> @f.AadhaarNo</p>
+                                                    <div class="d-flex gap-2 mt-2">
+                                                        <a asp-controller="Vaccine" asp-action="BookSlot" asp-route-familyId="@f.FamilyId" class="btn btn-success btn-sm flex-fill"><i class="bi bi-calendar-plus"></i> Book Slot</a>
+                                                        <form asp-controller="Vaccine" asp-action="DeleteFamily" asp-route-id="@f.FamilyId" method="post" style="display:inline;">
+                                                            <button type="submit" class="btn btn-danger btn-sm flex-fill" onclick="return confirm('Are you sure you want to delete this family member?');"><i class="bi bi-trash"></i> Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="no-family">No family members added yet.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info d-flex align-items-center gap-2">
+                <i class="bi bi-capsule-pill fs-4"></i>
+                <span>Total Vaccines Booked (You & Family):</span>
+                <span class="badge bg-primary">@bookingCount</span>
+            </div>
+
+            @if (ViewBag.Bookings != null && ViewBag.Bookings.Count > 0)
+            {
+                <div class="card mt-4">
+                    <div class="card-header bg-info text-white">
+                        <i class="bi bi-calendar-check me-2"></i>Booking Details
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            @foreach (var booking in ViewBag.Bookings)
+                            {
+                                var isUserBooking = booking.FamilyId == null;
+                                var memberName = booking.Family != null ? booking.Family.FullName : ViewBag.User.FullName;
+                                var vaccineName = booking.Vaccine?.VaccineName ?? "";
+                                var slotDate = booking.Slot?.SlotDate.ToString("yyyy-MM-dd") ?? "";
+                                var slotTime = booking.Slot?.SlotTime.ToString(@"hh\:mm") ?? "";
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card booking-card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="bi bi-person-badge me-1"></i>@memberName</h5>
+                                            <p class="card-text"><strong>Vaccine:</strong> @vaccineName</p>
+                                            <p class="card-text"><strong>Slot Date:</strong> @slotDate</p>
+                                            <p class="card-text"><strong>Slot Time:</strong> @slotTime</p>
+                                            <p class="card-text">
+                                                <strong>Status:</strong>
+                                                <span class="badge @(booking.Status == "Booked" ? "bg-success" : "bg-secondary")">@booking.Status</span>
+                                            </p>
+                                            <div class="d-flex gap-2 mt-2">
+                                                @if (booking.Status == "Booked")
+                                                {
+                                                    if (isUserBooking)
+                                                    {
+                                                        <form asp-controller="Vaccine" asp-action="CancelBookingForUser" method="post" style="display:inline;">
+                                                            <button type="submit" class="btn btn-warning btn-sm flex-fill" onclick="return confirm('Are you sure you want to cancel this booking?');"><i class="bi bi-x-circle"></i> Cancel Slot</button>
+                                                        </form>
+                                                    }
+                                                    else
+                                                    {
+                                                        <form asp-controller="Vaccine" asp-action="CancelBooking" asp-route-familyId="@booking.FamilyId" method="post" style="display:inline;">
+                                                            <button type="submit" class="btn btn-warning btn-sm flex-fill" onclick="return confirm('Are you sure you want to cancel this booking?');"><i class="bi bi-x-circle"></i> Cancel Slot</button>
+                                                        </form>
+                                                    }
+                                                }
+                                                @if (booking.Status == "Cancelled")
+                                                {
+                                                    if (isUserBooking)
+                                                    {
+                                                        <a asp-controller="Vaccine" asp-action="BookSlotForUser" asp-route-vaccineId="@booking.VaccineId" class="btn btn-info btn-sm flex-fill"><i class="bi bi-arrow-repeat"></i> Reschedule Slot</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a asp-controller="Vaccine" asp-action="BookSlot" asp-route-familyId="@booking.FamilyId" class="btn btn-info btn-sm flex-fill"><i class="bi bi-arrow-repeat"></i> Reschedule Slot</a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="no-bookings mt-4">No bookings found.</div>
+            }
+        </div>
+    </body>
+    </html>
+</html>

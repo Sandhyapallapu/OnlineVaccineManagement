@@ -1,0 +1,177 @@
+﻿@model CO_VM.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update User Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3f0ff 0%, #f8fbff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .update-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .update-title {
+            text-align: center;
+            font-weight: 600;
+            color: #2a4365;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #2a4365;
+        }
+
+        .edit-btn {
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            margin-top: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .alert {
+            margin-bottom: 1rem;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+            .search-form input[type="text"] {
+                width: 220px;
+                margin-right: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="update-container">
+        <h2 class="update-title">Update User Details</h2>
+        <hr />
+        @if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.Success))
+        {
+            <div class="alert alert-success">@ViewBag.Success</div>
+        }
+        <div class="search-form">
+            <form method="get" asp-action="UpdateUser" class="d-flex">
+                <input type="text" name="id" class="form-control" placeholder="Enter the User Id" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </form>
+        </div>
+
+        @if (Model != null)
+        {
+            <form method="post" asp-action="UpdateUser">
+                <input type="hidden" asp-for="UserId" />
+
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <div class="d-flex align-items-center">
+                        <span id="FullNameDisplay">@Model.FullName</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('FullName')">Edit</button>
+                    </div>
+                    <input asp-for="FullName" name="FullName" class="form-control d-none" id="FullNameInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">User Name</label>
+                    <div class="d-flex align-items-center">
+                        <span id="UsernameDisplay">@Model.Username</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('Username')">Edit</button>
+                    </div>
+                    <input asp-for="Username" name="Username" class="form-control d-none" id="UsernameInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <div class="d-flex align-items-center">
+                        <span id="EmailDisplay">@Model.Email</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('Email')">Edit</button>
+                    </div>
+                    <input asp-for="Email" name="Email" class="form-control d-none" id="EmailInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Aadhaar Number</label>
+                    <div class="d-flex align-items-center">
+                        <span id="AadharNoDisplay">@Model.AadhaarNo</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('AadharNo')">Edit</button>
+                    </div>
+                    <input asp-for="AadhaarNo" name="AadhaarNo" class="form-control d-none" id="AadharNoInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <div class="d-flex align-items-center">
+                        <span id="PhoneNumberDisplay">@Model.PhoneNumber</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('PhoneNumber')">Edit</button>
+                    </div>
+                    <input asp-for="PhoneNumber" name="PhoneNumber" class="form-control d-none" id="PhoneNumberInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <div class="d-flex align-items-center">
+                        <span id="AddressDisplay">@Model.Address</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('Address')">Edit</button>
+                    </div>
+                    <input asp-for="Address" name="Address" class="form-control d-none" id="AddressInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <div class="d-flex align-items-center">
+                        <span id="CityDisplay">@Model.City</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('City')">Edit</button>
+                    </div>
+                    <input asp-for="City" name="City" class="form-control d-none" id="CityInput" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">State</label>
+                    <div class="d-flex align-items-center">
+                        <span id="StateDisplay">@Model.State</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm edit-btn" onclick="toggleEdit('State')">Edit</button>
+                    </div>
+                    <input asp-for="State" name="State" class="form-control d-none" id="StateInput" />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">Update</button>
+                </div>
+            </form>
+        }
+    </div>
+    <script>
+        function toggleEdit(field) {
+            document.getElementById(field + 'Display').classList.toggle('d-none');
+            document.getElementById(field + 'Input').classList.toggle('d-none');
+        }
+    </script>
+</body>
+</html>

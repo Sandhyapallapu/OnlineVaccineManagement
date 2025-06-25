@@ -1,0 +1,117 @@
+﻿@{
+    var family = ViewBag.Family as CO_VM.Models.Family;
+    var vaccines = ViewBag.Vaccines as List<CO_VM.Models.Vaccine>;
+    var centres = ViewBag.Centres as List<CO_VM.Models.Centre>;
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #e3f0ff 0%, #b6d0f7 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .booking-container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 6px 32px rgba(44, 101, 144, 0.12);
+        padding: 2.5rem 2rem 2rem 2rem;
+        max-width: 480px;
+        margin: 3rem auto;
+    }
+    .booking-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+    .form-label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        font-size: 1rem;
+        margin-top: 0.25rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s;
+    }
+    .form-control:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px #dbeafe;
+    }
+    .btn-success {
+        background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+        border: none;
+        font-weight: 600;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        transition: background 0.2s;
+    }
+    .btn-success:hover {
+        background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    }
+    .btn-secondary {
+        background: #e0e7ef;
+        color: #2563eb;
+        border: none;
+        font-weight: 600;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        margin-left: 0.5rem;
+        transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover {
+        background: #c7d2fe;
+        color: #1e293b;
+    }
+    .alert-danger {
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+</style>
+
+<div class="booking-container">
+    <h2 class="booking-title">Book Vaccination Slot for @family.FullName</h2>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    <form asp-action="BookSlot" method="post">
+        <input type="hidden" name="familyId" value="@family.FamilyId" />
+        <div class="mb-3">
+            <label class="form-label">Vaccine</label>
+            <select name="vaccineId" class="form-control" required>
+                <option value="">Select</option>
+                @foreach (var v in vaccines)
+                {
+                    <option value="@v.VaccineId">@v.VaccineName</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Centre</label>
+            <select name="centreId" class="form-control" required>
+                <option value="">Select</option>
+                @foreach (var c in centres)
+                {
+                    <option value="@c.CentreId">@c.CentreName</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Slot Date</label>
+            <input type="date" name="slotDate" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Slot Time</label>
+            <input type="time" name="slotTime" class="form-control" required />
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-success">Book Slot</button>
+            <a asp-action="UserDashboard" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
